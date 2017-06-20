@@ -1,0 +1,22 @@
+server:
+  port: 6789
+spring:
+  application:
+    name: zuul-app-gateway
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    preferInAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+zuul:
+  routes:
+    self-define-route-name: #其中api-contract是路由名称，可以随便定义，但是path和service-id需要一一对应
+      path: /user/**
+      stripPrefix: false  #是否去掉前缀，如果为false,如果请求/user/1 会映射到USER-CENTER/user/1；如果为true,则只有请求/user/user/1才会映射到USER-CENTER/user/user/1
+      service-id: USER-CENTER #USER-CENTER为注册到Eureka上的服务名
