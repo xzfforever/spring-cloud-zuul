@@ -1,0 +1,15 @@
+server:
+  port: 6789
+spring:
+  application:
+    name: zuul-app-gateway
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    preferInAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}

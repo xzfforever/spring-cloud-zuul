@@ -16,3 +16,4 @@
 
 <li>参考资料
 >http://blog.csdn.net/a60782885/article/details/69486566[Spring Cloud入门3——API Gateway(权限控制)]
+>http://www.cnblogs.com/xd03122049/p/6036318.html[Zuul(SpringCloud学习笔记一)]
